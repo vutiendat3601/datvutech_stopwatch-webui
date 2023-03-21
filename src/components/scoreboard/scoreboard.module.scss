@@ -1,0 +1,35 @@
+.scoreboard-heading {
+    font-size: 3rem;
+}
+
+.cell-with-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+        margin-left: 8px;
+    }
+}
+
+.btn-stop {
+    height: 24px;
+}
+
+.team-data {
+    border-collapse: collapse;
+
+    th,
+    td {
+        padding: 8px;
+        border: 2px solid #ddd;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .time{
+        display: block;
+        width: 100px;
+    }
+}
