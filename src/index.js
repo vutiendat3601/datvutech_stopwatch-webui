@@ -4,12 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/global-styles/global-styles.component';
 import { Stopwatch } from './utils/Stopwatch';
+import Test from './Test';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <GlobalStyles>
             <App />
+            {/* <Test /> */}
         </GlobalStyles>
     </React.StrictMode>
 );
@@ -19,7 +21,3 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-const stopwatch = new Stopwatch((min, sec, ms) => {
-    console.log(min, sec, ms);
-});
-stopwatch.start();

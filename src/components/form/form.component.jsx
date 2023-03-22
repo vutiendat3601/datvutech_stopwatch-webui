@@ -1,14 +1,26 @@
 import classNamesBinding from 'classnames/bind';
+import { useEffect, useState } from 'react';
 
 import Button from '../button/button.component';
 import styles from './form.module.scss';
 
 const css = classNamesBinding.bind(styles);
 
-const Form = ({ title, description, action, onSubmit, fields }) => {
-    // field = { type: 'text', fieldName: 'time', message };
+const Form = ({ title, description, action, fields, onSubmit }) => {
+    const fieldDatasInit = new Map();
+    fields.forEach((field) => {
+        fieldDatasInit.set(field.fieldName, 1);
+    });
+
+    const [fieldDatas, setFieldDatas] = useState(fieldDatasInit);
+
+    const handleFieldOnChanged = (fieldName, value) => {
+        setFieldDatas(new Map(fieldDatas.set(fieldName, value)));
+    };
+
     const handleOnSubmit = (e) => {
         e.preventDefault();
+        onSubmit(fieldDatas);
     };
     return (
         <form onClick={(e) => handleOnSubmit}>
@@ -32,6 +44,11 @@ const Form = ({ title, description, action, onSubmit, fields }) => {
                                 id={fieldName}
                                 type={type}
                                 name={fieldName}
+                                value={fieldDatas.get(fieldName)}
+                                onChange={(e) => {
+                                    let value = Number.parseInt(e.target.value);
+                                    handleFieldOnChanged(fieldName, value);
+                                }}
                             />
                         </div>
                         <span className={css('form-message')}>
@@ -41,7 +58,11 @@ const Form = ({ title, description, action, onSubmit, fields }) => {
                 );
             })}
 
-            <Button className={css('form-submit')} primary>
+            <Button
+                className={css('form-submit')}
+                primary
+                onClick={handleOnSubmit}
+            >
                 {action}
             </Button>
         </form>
