@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/datvutech_stopwatch-webui/static/css/main.0af9816d.css",
+    "main.js": "/datvutech_stopwatch-webui/static/js/main.fe59645d.js",
+    "static/js/787.d7079b59.chunk.js": "/datvutech_stopwatch-webui/static/js/787.d7079b59.chunk.js",
+    "index.html": "/datvutech_stopwatch-webui/index.html",
+    "main.0af9816d.css.map": "/datvutech_stopwatch-webui/static/css/main.0af9816d.css.map",
+    "main.fe59645d.js.map": "/datvutech_stopwatch-webui/static/js/main.fe59645d.js.map",
+    "787.d7079b59.chunk.js.map": "/datvutech_stopwatch-webui/static/js/787.d7079b59.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0af9816d.css",
+    "static/js/main.fe59645d.js"
+  ]
+}
