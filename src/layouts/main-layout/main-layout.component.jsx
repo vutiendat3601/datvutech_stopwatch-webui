@@ -5,6 +5,7 @@ import Header from '../components/header/header.component';
 import Scoreboard from '../../components/scoreboard/scoreboard.component';
 import { useEffect, useState } from 'react';
 import Standings from '../../components/standings/standings.component';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const css = classNamesBinding.bind(styles);
 const MainLayout = () => {
@@ -115,6 +116,21 @@ const MainLayout = () => {
                 (time) => time.teamId === teamId && time.gameId === gameId
             );
             time.stopped = true;
+            const lastStopTeamTime =
+                newTimes.filter((time) => time.stopped && time.gameId == gameId)
+                    .length == teams.length;
+
+            if (lastStopTeamTime) {
+                const newGames = [...games];
+                const game = newGames.find(
+                    (game) => game.gameId == time.gameId
+                );
+                game.playing = false;
+                console.log('intervalId: ', game.intervalId);
+                clearInterval(game.intervalId);
+                game.intervalId = -1;
+                setGames(newGames);
+            }
             return newTimes;
         });
     };
@@ -187,6 +203,7 @@ const MainLayout = () => {
                         time.sec = 0;
                     }
                     setGameTimers(newGameTimers);
+                    console.log(time);
                 }, 10);
                 game.intervalId = intervalId;
             }
