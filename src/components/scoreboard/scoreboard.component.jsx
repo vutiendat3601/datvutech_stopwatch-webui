@@ -6,84 +6,67 @@ import styles from './scoreboard.module.scss';
 
 const css = classNamesBinding.bind(styles);
 
-const Scoreboard = ({ teams, games, times, onStartGame, onStopTeamTime }) => {
+const Scoreboard = () => {
     return (
-        <div className={css('scoreboard')}>
-            <h1 className={css('scoreboard-heading')}>Scoreboard</h1>
-            <table className={css('team-data')}>
-                <thead>
-                    <tr>
-                        <th>Team</th>
-                        {games.map((game) => (
-                            <th key={game.gameId}>
-                                <div className={css('cell-with-button')}>
-                                    <h1>{game.name}</h1>
-                                    <Button
-                                        className={css('btn-stop')}
-                                        primary
-                                        onClick={(e) =>
-                                            onStartGame(game.gameId)
-                                        }
-                                    >
-                                        {game.playing ? 'Stop' : 'Start'}
-                                    </Button>
-                                </div>
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {teams.map((team) => {
-                        const teamTime = times.filter(
-                            (time) => time.teamId === team.teamId
-                        );
-                        return (
-                            <tr key={team.teamId}>
-                                <td>
-                                    <h1>{team.name}</h1>
-                                </td>
-                                {teamTime.map((time, index) => {
-                                    const { value } = time;
-                                    return (
-                                        <td key={index}>
-                                            <div
-                                                className={css(
-                                                    'cell-with-button'
-                                                )}
-                                            >
-                                                <h1 className={css('time')}>
-                                                    {`${getLeadingZeroNumber(
-                                                        value.min,
-                                                        2
-                                                    )}:${getLeadingZeroNumber(
-                                                        value.sec,
-                                                        2
-                                                    )}:${getLeadingZeroNumber(
-                                                        value.ms,
-                                                        2
-                                                    )}`}
-                                                </h1>
-                                                <Button
-                                                    className={css('btn-stop')}
-                                                    primary
-                                                    onClick={(e) => {
-                                                        onStopTeamTime(
-                                                            time.teamId,
-                                                            time.gameId
-                                                        );
-                                                    }}
-                                                >
-                                                    Stop
-                                                </Button>
-                                            </div>
-                                        </td>
-                                    );
-                                })}
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+        <div className={css('wrapper')}>
+            <div className={css('inner')}>
+                <h1 className={css('heading')}>Game 1</h1>
+                <div className={css('chooser')}>
+                    <h1>Choose game</h1>
+                    <select className={css('options')}>
+                        <option>Game 1</option>
+                        <option>Game 2</option>
+                        <option>Game 3</option>
+                        <option>Summary</option>
+                    </select>
+                </div>
+                <div className={css('records')}>
+                    <div className={css('col-1')}>
+                        <div className={css('cell')}>
+                            <h1 className={css('col-label')}>Rank</h1>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>1</h3>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>2</h3>
+                        </div>
+                    </div>
+                    <div className={css('col-2')}>
+                        <div className={css('cell')}>
+                            <h1 className={css('col-label')}>Team</h1>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>Team 1asdfasdfasdfasd</h3>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>Team 2asdfasdfasdfasd</h3>
+                        </div>
+                    </div>
+                    <div className={css('col-3')}>
+                        <div className={css('cell')}>
+                            <h1 className={css('col-label')}>Time</h1>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>01:01:78</h3>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>01:04:71</h3>
+                        </div>
+                    </div>
+                    <div className={css('col-3')}>
+                        <div className={css('cell')}>
+                            <h1 className={css('col-label')}>Point</h1>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>100</h3>
+                        </div>
+                        <div className={css('cell')}>
+                            <h3>80</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

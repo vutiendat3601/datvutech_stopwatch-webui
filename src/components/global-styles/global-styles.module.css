@@ -10,6 +10,8 @@
 
     /* Global value */
     --global-border-radius: 6px;
+    --global-wrapper-padding: 4px 6px;
+
 }
 
 * {
