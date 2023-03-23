@@ -25,11 +25,13 @@ const GameInitializer = ({ onInitModels }) => {
                 title="Số lượng đội"
                 type={'number'}
                 value={numOfTeams}
+                minValue="1"
                 onChange={(e) => setNumOfTeams(e.target.value)}
-            ></FormGroup>
+                ></FormGroup>
             <FormGroup
                 title="Số lượng trò chơi"
                 type={'number'}
+                minValue="1"
                 value={numOfGames}
                 onChange={(e) => setNumOfGames(e.target.value)}
             ></FormGroup>

@@ -20,6 +20,10 @@
     flex-direction: column;
     align-items: center;
 }
+.spacer {
+    border-top: 2px solid #ccc;
+    margin: 12px 0;
+}
 
 .content-wrapper {
     width: 100%;
@@ -28,6 +32,8 @@
 }
 
 .content-inner {
+    overflow-y: scroll;
+    height: 630px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

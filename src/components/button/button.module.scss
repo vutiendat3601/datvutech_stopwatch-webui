@@ -30,11 +30,11 @@
 }
 
 .disabled {
+    background-color: var(--primary-color);
     opacity: 0.6;
 
     &:hover {
         cursor: default;
         opacity: 0.6;
-        background-color: unset;
     }
 }

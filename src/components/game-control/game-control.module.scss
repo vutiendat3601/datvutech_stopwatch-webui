@@ -44,7 +44,7 @@
         width: 220px;
     }
     .col-3 {
-        width: 150px;
+        width: 160px;
     }
 
     .cell {
@@ -63,8 +63,16 @@
     border-radius: var(--global-border-radius);
 }
 .time {
+    justify-content: center;
     padding: var(--default-cell-padding);
     width: 100%;
+    display: flex;
+    h1,
+    h2,
+    h3 {
+        display: block;
+        width: 72px;
+    }
 }
 .header {
     display: flex;

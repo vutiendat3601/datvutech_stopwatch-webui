@@ -30,6 +30,7 @@
     }
 }
 
+.scoreboard-header,
 .records {
     width: 100%;
     display: flex;
@@ -51,6 +52,11 @@
         border: 1px solid var(--primary-color);
         padding: 4px;
     }
+}
+
+.records {
+    height: 320px;
+    overflow-y: scroll;
 }
 
 .inner {

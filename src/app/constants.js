@@ -1,0 +1,3 @@
+const MAX_MS_OF_ONE_HOUR = 277000;
+
+export { MAX_MS_OF_ONE_HOUR };

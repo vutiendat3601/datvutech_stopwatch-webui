@@ -14,7 +14,7 @@ const initGames = (numOfGames) => {
         games.push({
             gameId: i,
             name: `Game ${i}`,
-            playing: false,
+            status: 'initial',
             time: { min: 0, sec: 0, ms: 0 },
             interval: -1,
         });
@@ -30,8 +30,8 @@ const initTimes = (numOfTeams, numOfGames) => {
             times.push({
                 teamId: i,
                 gameId: j,
-                playing: false,
-                time: { min: 0, sec: 0, ms: 0 },
+                finished: false,
+                value: { min: 0, sec: 0, ms: 0 },
             });
         }
     }
