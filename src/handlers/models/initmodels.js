@@ -15,7 +15,8 @@ const initGames = (numOfGames) => {
             gameId: i,
             name: `Game ${i}`,
             status: 'initial',
-            time: { min: 0, sec: 0, ms: 0 },
+            maxOfPoint: 100,
+            time: { hr: 0, min: 0, sec: 0, ms: 0 },
             interval: -1,
         });
     }
@@ -31,7 +32,7 @@ const initTimes = (numOfTeams, numOfGames) => {
                 teamId: i,
                 gameId: j,
                 finished: false,
-                value: { min: 0, sec: 0, ms: 0 },
+                value: { hr: 0, min: 0, sec: 0, ms: 0 },
             });
         }
     }

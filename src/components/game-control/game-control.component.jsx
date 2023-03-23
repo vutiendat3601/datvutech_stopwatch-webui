@@ -1,5 +1,5 @@
 import classNamesBinding from 'classnames/bind';
-import { convertToMinuteSecondMsText } from '../../utils/TimeUtils';
+import { convertToHrMinSecMsText } from '../../utils/TimeUtils';
 
 import Button from '../button/button.component';
 import styles from './game-control.module.scss';
@@ -12,7 +12,7 @@ const GameControl = ({ teams, game, times, onStartGame, onStopTeamGame }) => {
             <div className={css('inner')}>
                 <h1 className={css('heading')}>{game.name}</h1>
                 <div className={css('time')}>
-                    <h1>{convertToMinuteSecondMsText(game.time)}</h1>
+                    <h1>{convertToHrMinSecMsText(game.time)}</h1>
                     <Button
                         className={css('btn-in-cell')}
                         primary
@@ -54,7 +54,7 @@ const GameControl = ({ teams, game, times, onStartGame, onStopTeamGame }) => {
                                     key={team.teamId}
                                 >
                                     <h3>
-                                        {convertToMinuteSecondMsText(
+                                        {convertToHrMinSecMsText(
                                             time.value
                                         )}
                                     </h3>

@@ -41,10 +41,10 @@
         width: 60px;
     }
     .col-2 {
-        width: 220px;
+        width: 200px;
     }
     .col-3 {
-        width: 160px;
+        width: 190px;
     }
 
     .cell {
@@ -61,6 +61,7 @@
     border-collapse: collapse;
     border: 2px solid var(--primary-color);
     border-radius: var(--global-border-radius);
+    height: fit-content;
 }
 .time {
     justify-content: center;
@@ -71,7 +72,7 @@
     h2,
     h3 {
         display: block;
-        width: 72px;
+        width: 90px;
     }
 }
 .header {

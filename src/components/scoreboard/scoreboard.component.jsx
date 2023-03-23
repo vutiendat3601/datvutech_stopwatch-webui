@@ -1,11 +1,15 @@
 import classNamesBinding from 'classnames/bind';
 
 import { useEffect, useState } from 'react';
-import { MAX_MS_OF_ONE_HOUR } from '../../app/constants';
+import {
+    MAX_MS_OF_ONE_HOUR,
+    MAX_POINT_OF_EVERY_GAME,
+    SUBTRACT_POINT,
+} from '../../app/constants';
 import {
     compareTime,
-    convertToMinuteSecondMs,
-    convertToMinuteSecondMsText,
+    convertToHrMinSecMs,
+    convertToHrMinSecMsText,
     convertToMs,
 } from '../../utils/TimeUtils';
 import styles from './scoreboard.module.scss';
@@ -27,14 +31,17 @@ const Scoreboard = ({ games, teams, times }) => {
             rankedTimes = [...times]
                 .filter((time) => time.gameId === gameIdChoosen)
                 .sort((time1, time2) => compareTime(time1.value, time2.value))
-                .map((time) => ({
-                    ...time,
-                    point: Number.parseInt(
-                        1000 -
-                            (convertToMs(time.value) / MAX_MS_OF_ONE_HOUR) *
-                                1000
-                    ),
-                }));
+                .map((time, index) => {
+                    const game = games.find((g) => g.gameId === time.gameId);
+                    return {
+                        ...time,
+                        point:
+                            game.status === 'initial' ||
+                            game.status === 'playing'
+                                ? 0
+                                : game.maxOfPoint - index * SUBTRACT_POINT,
+                    };
+                });
         } else {
             rankedTimes = [...teams]
                 .map((team) => {
@@ -43,31 +50,26 @@ const Scoreboard = ({ games, teams, times }) => {
                     );
                     const totalTime = teamTimes.reduce(
                         (res, cur) => {
-                            const { min, sec, ms } = cur.value;
-                            res.value.min += min;
-                            res.value.sec += sec;
-                            res.value.ms += ms;
-                            res.point += Number.parseInt(
-                                1000 -
-                                    (convertToMs(res.value) /
-                                        MAX_MS_OF_ONE_HOUR) *
-                                        1000
-                            );
+                            const { hr, min, sec, ms } = cur.value;
+                            res.hr += hr;
+                            res.min += min;
+                            res.sec += sec;
+                            res.ms += ms;
                             return res;
                         },
                         {
-                            point: 0,
-                            value: {
-                                min: 0,
-                                sec: 0,
-                                ms: 0,
-                            },
+                            hr: 0,
+                            min: 0,
+                            sec: 0,
+                            ms: 0,
                         }
                     );
+                    const totalPoint = teamTimes.reduce((res, cur) => {},
+                    ({res: 0}));
                     return {
                         teamId: team.teamId,
-                        value: convertToMinuteSecondMs(totalTime.value),
-                        point: totalTime.point,
+                        value: convertToHrMinSecMs(totalTime),
+                        point: games.le,
                     };
                 })
                 .sort((time1, time2) => compareTime(time1.value, time2.value));
@@ -162,7 +164,7 @@ const Scoreboard = ({ games, teams, times }) => {
                         {rankedTimes.map((time) => (
                             <div className={css('cell')} key={time.teamId}>
                                 <h3>
-                                    {convertToMinuteSecondMsText(time.value)}
+                                    {convertToHrMinSecMsText(time.value)}
                                 </h3>
                             </div>
                         ))}

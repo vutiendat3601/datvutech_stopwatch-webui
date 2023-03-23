@@ -83,7 +83,7 @@ const Game = () => {
     return (
         <div className={css('wrapper')}>
             <div className={css('sidebar')}>
-                <GameInitializer onInitModels={hanldeInitModels} />
+                <GameInitializer teams={teams} games={games} onInitModels={hanldeInitModels} />
                 <Scoreboard teams={teams} games={games} times={times} />
             </div>
             <div className={css('content')}>
