@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/datvutech_stopwatch-webui/static/css/main.0af9816d.css",
-    "main.js": "/datvutech_stopwatch-webui/static/js/main.fe59645d.js",
+    "main.css": "/datvutech_stopwatch-webui/static/css/main.95862d84.css",
+    "main.js": "/datvutech_stopwatch-webui/static/js/main.15da5a31.js",
     "static/js/787.d7079b59.chunk.js": "/datvutech_stopwatch-webui/static/js/787.d7079b59.chunk.js",
+    "static/media/rongviet-icon.jpg": "/datvutech_stopwatch-webui/static/media/rongviet-icon.4869680947df0495e5f0.jpg",
     "index.html": "/datvutech_stopwatch-webui/index.html",
-    "main.0af9816d.css.map": "/datvutech_stopwatch-webui/static/css/main.0af9816d.css.map",
-    "main.fe59645d.js.map": "/datvutech_stopwatch-webui/static/js/main.fe59645d.js.map",
+    "main.95862d84.css.map": "/datvutech_stopwatch-webui/static/css/main.95862d84.css.map",
+    "main.15da5a31.js.map": "/datvutech_stopwatch-webui/static/js/main.15da5a31.js.map",
     "787.d7079b59.chunk.js.map": "/datvutech_stopwatch-webui/static/js/787.d7079b59.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0af9816d.css",
-    "static/js/main.fe59645d.js"
+    "static/css/main.95862d84.css",
+    "static/js/main.15da5a31.js"
   ]
 }
